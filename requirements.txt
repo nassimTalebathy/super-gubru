@@ -1,0 +1,11 @@
+duckduckgo-search==3.8.5
+fake_useragent==1.2.1
+html2text==2020.1.16
+langchain==0.0.256
+langsmith==0.0.19
+openai==0.27.8
+pandas==2.0.3
+pydantic==1.10.12
+python-dotenv
+streamlit==1.26.0
+tiktoken==0.4.0

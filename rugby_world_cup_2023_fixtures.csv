@@ -1,0 +1,49 @@
+raw,dow,date,home,away,venue,pool
+"Fri 8 Sept France 27-13 New Zealand (Stade de France, Paris)",Fri,2023-09-08,France,New Zealand,"Stade de France, Paris",A
+"Sat 9 Sept Italy 52-8 Namibia (Stade Geoffroy Guichard, Saint-Étienne)",Sat,2023-09-09,Italy,Namibia,"Stade Geoffroy Guichard, Saint-Étienne",A
+"Thu 14 Sept France v Uruguay (8pm, Stade Pierre Mauroy, Lille)",Thu,2023-09-14,France,Uruguay,"Stade Pierre Mauroy, Lille",A
+"Fri 15 Sept New Zealand v Namibia (8pm, Stadium de Toulouse, Toulouse)",Fri,2023-09-15,New Zealand,Namibia,"Stadium de Toulouse, Toulouse",A
+"Wed 20 Sept Italy v Uruguay (4.45pm, Stade de Nice, Nice)",Wed,2023-09-20,Italy,Uruguay,"Stade de Nice, Nice",A
+"Thu 21 Sept France v Namibia (8pm, Stade Vélodrome, Marseille)",Thu,2023-09-21,France,Namibia,"Stade Vélodrome, Marseille",A
+"Wed 27 Sept Uruguay v Namibia (4.45pm, Parc OL, Lyon)",Wed,2023-09-27,Uruguay,Namibia,"Parc OL, Lyon",A
+"Fri 29 Sept New Zealand v Italy (8pm, Parc OL, Lyon)",Fri,2023-09-29,New Zealand,Italy,"Parc OL, Lyon",A
+"Thu 5 Oct New Zealand v Uruguay (8pm, Parc OL, Lyon)",Thu,2023-10-05,New Zealand,Uruguay,"Parc OL, Lyon",A
+"Fri 6 Oct France v Italy (8pm, Parc OL, Lyon)",Fri,2023-10-06,France,Italy,"Parc OL, Lyon",A
+"Sat 9 Sept Ireland 82-8 Romania (Stade de Bordeaux, Bordeaux)",Sat,2023-09-09,Ireland,Romania,"Stade de Bordeaux, Bordeaux",B
+"Sun 10 Sept South Africa v Scotland (4.45pm, Stade Vélodrome, Marseille)",Sun,2023-09-10,South Africa,Scotland,"Stade Vélodrome, Marseille",B
+"Sat 16 Sept Ireland v Tonga (8pm, Stade de la Beaujoire, Nantes)",Sat,2023-09-16,Ireland,Tonga,"Stade de la Beaujoire, Nantes",B
+"Sun 17 Sept South Africa v Romania (2pm, Stade de Bordeaux, Bordeaux)",Sun,2023-09-17,South Africa,Romania,"Stade de Bordeaux, Bordeaux",B
+"Sat 23 Sept South Africa v Ireland (8pm, Stade de France, Paris)",Sat,2023-09-23,South Africa,Ireland,"Stade de France, Paris",B
+"Sun 24 Sept Scotland v Tonga (4.45pm, Stade de Nice, Nice)",Sun,2023-09-24,Scotland,Tonga,"Stade de Nice, Nice",B
+"Sat 30 Sept Scotland v Romania (8pm, Stade Pierre Mauroy, Lille)",Sat,2023-09-30,Scotland,Romania,"Stade Pierre Mauroy, Lille",B
+"Sun 1 Oct South Africa v Tonga (8pm, Stade Vélodrome, Marseille)",Sun,2023-10-01,South Africa,Tonga,"Stade Vélodrome, Marseille",B
+"Sat 7 Oct Ireland v Scotland (8pm, Stade de France, Paris)",Sat,2023-10-07,Ireland,Scotland,"Stade de France, Paris",B
+"Sun 8 Oct Tonga v Romania (4.45pm, Stade Pierre Mauroy, Lille)",Sun,2023-10-08,Tonga,Romania,"Stade Pierre Mauroy, Lille",B
+"Sat 9 Sept Australia 35-15 Georgia (Stade de France, Paris)",Sat,2023-09-09,Australia,Georgia,"Stade de France, Paris",C
+"Sun 10 Sept Wales v Fiji (8pm, Stade de Bordeaux, Bordeaux)",Sun,2023-09-10,Wales,Fiji,"Stade de Bordeaux, Bordeaux",C
+"Sat 16 Sept Wales v Portugal (4.45pm, Stade de Nice, Nice)",Sat,2023-09-16,Wales,Portugal,"Stade de Nice, Nice",C
+"Sun 17 Sept Australia v Fiji (4.45pm, Stade Geoffroy Guichard, Saint-",Sun,2023-09-17,Australia,Fiji,"Stade Geoffroy Guichard, Saint-",C
+"Sat 23 Sept Georgia v Portugal (1pm, Stadium de Toulouse, Toulouse)",Sat,2023-09-23,Georgia,Portugal,"Stadium de Toulouse, Toulouse",C
+"Sun 24 Sept Wales v Australia (8pm, Parc OL, Lyon)",Sun,2023-09-24,Wales,Australia,"Parc OL, Lyon",C
+"Sat 30 Sept Fiji v Georgia (4.45pm, Stade de Bordeaux, Bordeaux)",Sat,2023-09-30,Fiji,Georgia,"Stade de Bordeaux, Bordeaux",C
+"Sun 1 Oct Australia v Portugal (4.45pm, Stade Geoffroy Guichard, Saint-",Sun,2023-10-01,Australia,Portugal,"Stade Geoffroy Guichard, Saint-",C
+"Sat 7 Oct Wales v Georgia (2pm, Stade de la Beaujoire, Nantes)",Sat,2023-10-07,Wales,Georgia,"Stade de la Beaujoire, Nantes",C
+"Sun 8 Oct Fiji v Portugal (8pm, Stadium de Toulouse, Toulouse)",Sun,2023-10-08,Fiji,Portugal,"Stadium de Toulouse, Toulouse",C
+"Sat 9 Sept England 27-10 Argentina (Stade Vélodrome, Marseille)",Sat,2023-09-09,England,Argentina,"Stade Vélodrome, Marseille",D
+"Sun 10 Sept Japan v Chile (noon, Stadium de Toulouse, Toulouse)",Sun,2023-09-10,Japan,Chile,"Stadium de Toulouse, Toulouse",D
+"Sat 16 Sept Samoa v Chile (2pm, Stade de Bordeaux, Bordeaux)",Sat,2023-09-16,Samoa,Chile,"Stade de Bordeaux, Bordeaux",D
+"Sun 17 Sept England v Japan (8pm, Stade de Nice, Nice)",Sun,2023-09-17,England,Japan,"Stade de Nice, Nice",D
+"Fri 22 Sept Argentina v Samoa (4.45pm, Stade Geoffroy Guichard, Saint-",Fri,2023-09-22,Argentina,Samoa,"Stade Geoffroy Guichard, Saint-",D
+"Sat 23 Sept England v Chile (4.45pm, Stade Pierre Mauroy, Lille)",Sat,2023-09-23,England,Chile,"Stade Pierre Mauroy, Lille",D
+"Thu 28 Sept Japan v Samoa (8pm, Stadium de Toulouse, Toulouse)",Thu,2023-09-28,Japan,Samoa,"Stadium de Toulouse, Toulouse",D
+"Sat 30 Sept Argentina v Chile (2pm, Stade de la Beaujoire, Nantes)",Sat,2023-09-30,Argentina,Chile,"Stade de la Beaujoire, Nantes",D
+"Sat 7 Oct England v Samoa (4.45pm, Stade Pierre Mauroy, Lille)",Sat,2023-10-07,England,Samoa,"Stade Pierre Mauroy, Lille",D
+"Sun 8 Oct Japan v Argentina (noon, Stade de la Beaujoire, Nantes)",Sun,2023-10-08,Japan,Argentina,"Stade de la Beaujoire, Nantes",D
+"Sat 14 Oct Winner Pool C v Runner-up Pool D (4pm, Stade Vélodrome,",Sat,2023-10-14,Winner Pool C,Runner-up Pool D,"Stade Vélodrome,",KNOCKOUT
+"Sat 14 Oct Winner Pool B v Runner-up Pool A (8pm, Stade de France, Paris)",Sat,2023-10-14,Winner Pool B,Runner-up Pool A,"Stade de France, Paris",KNOCKOUT
+"Sun 15 Oct Winner Pool D v Runner-up Pool C (4pm, Stade Vélodrome,",Sun,2023-10-15,Winner Pool D,Runner-up Pool C,"Stade Vélodrome,",KNOCKOUT
+"Sun 15 Oct Winner Pool A v Runner-up Pool B (8pm, Stade de France, Paris)",Sun,2023-10-15,Winner Pool A,Runner-up Pool B,"Stade de France, Paris",KNOCKOUT
+"Fri 20 Oct Winner Quarter-final 1 v Winner Quarter-final 2 (8pm, Stade de",Fri,2023-10-20,Winner Quarter-final 1,Winner Quarter-final 2,Stade de,KNOCKOUT
+"Sat 21 Oct Winner Quarter-final 3 v Winner Quarter-final 4 (8pm, Stade de",Sat,2023-10-21,Winner Quarter-final 3,Winner Quarter-final 4,Stade de,KNOCKOUT
+"Fri 27 Oct Third-place Play-off (8pm, Stade de France, Paris)",Fri,2023-10-27,Loser Semi-final 1,Loser Semi-final 2,"Stade de France, Paris",KNOCKOUT
+"Sat 28 Oct World Cup Final (8pm, Stade de France, Paris)",Sat,2023-10-28,Winner Semi-final 1,Winner Semi-final 2,"Stade de France, Paris",KNOCKOUT
