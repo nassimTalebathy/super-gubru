@@ -11,9 +11,9 @@ import openai
 
 st.set_page_config(page_title="Super-GuBru", page_icon=":rugby:", layout="wide")
 load_dotenv(".env", override=True)
-# # Reset OPENAI key on startup
-# if "OPENAI_API_KEY" in os.environ:
-#     os.environ.pop("OPENAI_API_KEY")
+# Reset OPENAI key on startup
+if "OPENAI_API_KEY" not in st.session_state:
+    st.session_state["OPENAI_API_KEY"] = ""
 
 
 @st.cache_data
@@ -50,6 +50,7 @@ st.subheader("Predicting SuperBru results since '23")
 with st.sidebar:
     openai_api_key = st.text_input(
         label="OPENAI API KEY",
+        value=st.session_state["OPENAI_API_KEY"],
         type="password",
     )
 
@@ -62,6 +63,7 @@ if openai_api_key is not None and openai_api_key != "" and selected_fixture is n
     # API Key
     openai.api_key = openai_api_key
     os.environ["OPENAI_API_KEY"] = openai_api_key
+    st.session_state["OPENAI_API_KEY"] = openai_api_key
     # Create the gubru
     gubru = bru.SuperGuBru()
     # Extract home, away
