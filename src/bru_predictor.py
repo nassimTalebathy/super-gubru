@@ -226,7 +226,6 @@ def _build_reviewer_chain(
 
 
 class SuperGuBru(BaseModel):
-    openai_api_key: str
     search: utils.SearchType | None = None
     map_reduce_chain: MapReduceDocumentsChain = Field(
         default_factory=lambda **kw: _build_map_reduce_chain()

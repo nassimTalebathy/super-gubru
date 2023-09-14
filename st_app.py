@@ -52,6 +52,7 @@ with st.sidebar:
         label="OPENAI API KEY",
         value=st.session_state["OPENAI_API_KEY"],
         type="password",
+        key="OPENAI_API_KEY",
     )
 
 
@@ -63,7 +64,6 @@ if openai_api_key is not None and openai_api_key != "" and selected_fixture is n
     # API Key
     openai.api_key = openai_api_key
     os.environ["OPENAI_API_KEY"] = openai_api_key
-    st.session_state["OPENAI_API_KEY"] = openai_api_key
     # Create the gubru
     gubru = bru.SuperGuBru()
     # Extract home, away
