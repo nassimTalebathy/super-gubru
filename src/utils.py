@@ -10,7 +10,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import ChatPromptTemplate
 import json
 import asyncio
-from pydantic import BaseModel, AnyUrl
+from pydantic import BaseModel
 import os
 import openai
 
@@ -45,7 +45,7 @@ def load_docs_from_urls_sync(urls: list[str]) -> List[Document]:
 class SearchResult(BaseModel):
     snippet: str
     title: str
-    link: AnyUrl
+    link: str
 
 
 SearchType = BraveSearchWrapper | GoogleSearchAPIWrapper | DuckDuckGoSearchAPIWrapper

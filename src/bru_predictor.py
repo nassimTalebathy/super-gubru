@@ -18,12 +18,12 @@ from langchain.prompts import (
 from langchain.chains import (
     MapReduceDocumentsChain,
     ReduceDocumentsChain,
-    StuffDocumentsChain,
 )
 from pydantic import BaseModel, Field
 from langchain.output_parsers import PydanticOutputParser
 
 import src.utils as utils
+import src.basic_combine_docs_chain as bcdc
 from langchain.chains import SequentialChain
 
 
@@ -96,9 +96,6 @@ def _build_map_reduce_chain(
     llm: BaseLanguageModel = None,
     llm_summariser: BaseLanguageModel = None,
     input_key: str = "scraped_docs",
-    document_prompt: PromptTemplate = PromptTemplate.from_template(
-        "Content: {page_content}\nSource: {source}"
-    ),
     summarise_prompt_template: str = SUMMARISE_PROMPT_TEMPLATE,
     raw_document_variable_name: str = "raw_content",
     summary_variable_name: str = "summaries",
@@ -120,17 +117,8 @@ def _build_map_reduce_chain(
         ]
     )
     summarise_chain = LLMChain(llm=llm_summariser, prompt=summarise_prompt)
-    # How to combine summaries
-    reduce_prompt = PromptTemplate.from_template(
-        'Combine these summaries. Don\'t drop any information (unless it is a duplicate):\n"""{'
-        + summary_variable_name
-        + '}"""'
-    )
-    reduce_llm_chain = LLMChain(llm=llm, prompt=reduce_prompt)
-    combine_documents_chain = StuffDocumentsChain(
-        llm_chain=reduce_llm_chain,
-        document_prompt=document_prompt,
-        document_variable_name=summary_variable_name,
+    combine_documents_chain = bcdc.BasicStuffDocumentsChain(
+        document_variable_name=summary_variable_name
     )
     reduce_documents_chain = ReduceDocumentsChain(
         combine_documents_chain=combine_documents_chain,
@@ -167,7 +155,7 @@ def _build_initial_prediction_chain(
             ),
             AIMessagePromptTemplate(
                 prompt=PromptTemplate.from_template(
-                    'Summary:\n"""{' + summary_key + '}"""\n'
+                    'Summary:\n"""\n{' + summary_key + '}\n"""\n'
                 )
             ),
         ]
