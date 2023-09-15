@@ -1,5 +1,5 @@
 import langchain as lc
-import os
+import json
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from langchain.chains import LLMChain
@@ -225,7 +225,8 @@ def _build_reviewer_chain(
     return reviewer_chain
 
 
-class SuperGuBru(BaseModel):
+class BaseGuBru(BaseModel):
+    verbose: bool = True
     search: utils.SearchType | None = None
     map_reduce_chain: MapReduceDocumentsChain = Field(
         default_factory=lambda **kw: _build_map_reduce_chain()
@@ -249,12 +250,21 @@ class SuperGuBru(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
-    def __init__(self, search_name: str | utils.SearchType = "ddg", **data):
-        if isinstance(search_name, utils.SearchType):
-            search = search_name
-        else:
-            search = utils.get_search_engine(search_name)
-        data["search"] = search
+    def search_queries(self, home: str, away: str, num_results=4) -> list[dict]:
+        raise NotImplementedError()
+
+    async def get_docs_from_search_results(
+        self, search_results: list[dict], first_chunk_only: bool = True
+    ) -> list[Document]:
+        raise NotImplementedError()
+
+    def run(self, home: str, away: str, docs: list[Document]) -> dict:
+        raise NotImplementedError()
+
+
+class SuperGuBru(BaseGuBru):
+    def __init__(self, search_name: str = "ddg", **data):
+        data["search"] = utils.get_search_engine(search_name)
         super().__init__(**data)
 
     def search_queries(self, home: str, away: str, num_results=4) -> list[dict]:
@@ -269,7 +279,10 @@ class SuperGuBru(BaseModel):
         if self.verbose:
             print(f"Running query: {queries['predictions']} with {num_results} results")
         pred_query_result = utils.run_search(
-            self.search, queries["predictions"], num_results=num_results
+            self.search,
+            queries["predictions"],
+            num_results=num_results,
+            as_dict=True,
         )
         if self.verbose:
             print(f"Running query: {queries['odds']} with 1 result")
@@ -277,6 +290,7 @@ class SuperGuBru(BaseModel):
             self.search,
             queries["odds"],
             num_results=1,
+            as_dict=True,
         )
         return pred_query_result + odds_query_result
 
@@ -288,10 +302,7 @@ class SuperGuBru(BaseModel):
         query_urls = list(set(query_urls))  # unique
         if self.verbose:
             print("urls retrieved: ", "\n".join(query_urls), sep="\n")
-        # Load html
-        # try:
-        #     query_docs = utils.load_docs_from_urls_sync(query_urls)
-        # except RuntimeError:
+        # Scrape urls
         query_docs = await utils.load_docs_from_urls(query_urls)
         if self.verbose:
             print(
@@ -354,69 +365,8 @@ class SuperGuBru(BaseModel):
             )
         return query_docs_text_chunked
 
-    def summarise_docs(self, home: str, away: str, docs: list[Document]) -> str:
-        summaries = self.map_reduce_chain(
-            {
-                "scraped_docs": docs,
-                "home": home,
-                "away": away,
-            },
-            return_only_outputs=False,
-        )
-        if self.verbose:
-            print(
-                "Summaries: ",
-                {k: v for k, v in summaries.items() if k != "scraped_docs"},
-                sep="\n",
-            )
-        return summaries[self.map_reduce_chain.output_key]
-
-    def make_initial_prediction(
-        self, home: str, away: str, reduced_summary: str
-    ) -> str:
-        initial_prediction = self.match_predictor_chain.predict(
-            **{"reduced_summary": reduced_summary, "home": home, "away": away},
-        )
-        if self.verbose:
-            print("First prediction: ", initial_prediction, sep="\n")
-        return initial_prediction
-
-    def review_initial_prediction(
-        self, home: str, away: str, initial_prediction: str, reduced_summary: str
-    ) -> str:
-        review_prediction = self.reviewer_chain.predict(
-            **{
-                "initial_prediction": initial_prediction,
-                "reduced_summary": reduced_summary,
-                "home": home,
-                "away": away,
-            },
-        )
-        if self.verbose:
-            print("Review prediction: ", review_prediction, sep="\n")
-        return review_prediction
-
-    async def search_and_run(
-        self, home: str, away: str, num_results: int = 4, first_chunk_only: bool = True
-    ) -> dict:
-        _home_away = dict(home=home, away=away)
-        search_results = self.search_queries(**_home_away, num_results=num_results)
-        docs = await self.get_docs_from_search_results(
-            search_results=search_results, first_chunk_only=first_chunk_only
-        )
-        return self.run(**_home_away, docs=docs)
-
     def run(self, home: str, away: str, docs: list[Document]) -> dict:
         _home_away = dict(home=home, away=away)
-        # reduced_summary = self.summarise_docs(**_home_away, docs=docs)
-        # initial_prediction = self.make_initial_prediction(
-        #     **_home_away, reduced_summary=reduced_summary
-        # )
-        # review_prediction = self.review_initial_prediction(
-        #     **_home_away,
-        #     initial_prediction=initial_prediction,
-        #     reduced_summary=reduced_summary,
-        # )
         full_chain = SequentialChain(
             chains=[
                 self.map_reduce_chain,
@@ -438,5 +388,38 @@ class SuperGuBru(BaseModel):
                 {k: v for k, v in output.items() if k != "scraped_docs"},
                 sep="\n",
             )
-        # initial_prediction = output[self.match_predictor_chain.output_key]
         return output
+
+
+#####
+# MOCK Implemenation
+with open("testing/mock_output.json") as f:
+    MOCK_PREDICTION = json.load(f)
+    MOCK_PREDICTION["scraped_docs"]: list[Document] = [
+        Document(**el) for el in MOCK_PREDICTION["scraped_docs"]
+    ]
+    MOCK_PREDICTION["revised_prediction"]: MatchPrediction = MatchPrediction(
+        **MOCK_PREDICTION["revised_prediction"]
+    )
+
+
+class MockSuperGuBru(BaseGuBru):
+    def search_queries(self, home: str, away: str, num_results=4) -> list[dict]:
+        return [
+            {"link": doc.metadata["source"]} for doc in MOCK_PREDICTION["scraped_docs"]
+        ]
+
+    async def get_docs_from_search_results(
+        self, search_results: list[dict], first_chunk_only: bool = True
+    ) -> list[Document]:
+        return MOCK_PREDICTION["scraped_docs"]
+
+    def run(self, home: str, away: str, docs: list[Document]) -> dict:
+        return MOCK_PREDICTION
+
+
+def get_gubru(mock: bool = False, **kwargs) -> BaseGuBru:
+    if mock:
+        return MockSuperGuBru(**kwargs)
+    else:
+        return SuperGuBru(**kwargs)

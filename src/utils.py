@@ -5,10 +5,14 @@ from langchain.document_loaders import AsyncHtmlLoader
 from langchain.utilities.brave_search import BraveSearchWrapper
 from langchain.utilities.google_search import GoogleSearchAPIWrapper
 from langchain.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import LLMChain
+from langchain.prompts import ChatPromptTemplate
 import json
 import asyncio
 from pydantic import BaseModel, AnyUrl
 import os
+import openai
 
 
 def clean_text(text: str):
@@ -94,3 +98,15 @@ def get_search_engine(name: str) -> SearchType:
         )
     else:
         raise ValueError(f"Invalid search name {name}")
+
+
+def vanilla_chatgpt_response(
+    query, system_msg="You are a helpful assistant", model="gpt-3.5-turbo"
+):
+    prompt = ChatPromptTemplate.from_messages(
+        [("system", system_msg), ("human", "{query}")]
+    )
+    llm = ChatOpenAI(model=model)
+    llm_chain = LLMChain(llm=llm, prompt=prompt, output_key="text")
+    prediction = llm_chain({"query": query})
+    return prediction["text"]
