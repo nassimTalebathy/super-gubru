@@ -64,7 +64,7 @@ Answer using the following format:
 - <another factor ...>
 ... (as many iterations as needed to get to a final answer)
 Predicted winner: <team>
-Predicted points margin: <number>
+Predicted points margin: <number> (CANNOT BE NULL)
 """.strip()
 INITIAL_PREDICTION_PROMPT_PREFIX = (
     "You are an expert rugby pundit consulting me with my SuperBru predictions for the 2023 Rugby World Cup. "
