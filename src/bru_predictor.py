@@ -20,7 +20,7 @@ from langchain.chains import (
     ReduceDocumentsChain,
 )
 from pydantic import BaseModel, Field
-from langchain.output_parsers import PydanticOutputParser
+from langchain.output_parsers import PydanticOutputParser, OutputFixingParser
 
 import src.utils as utils
 import src.basic_combine_docs_chain as bcdc
@@ -181,7 +181,12 @@ def _build_reviewer_chain(
     # Small LLM is fine here
     if llm is None:
         llm = get_llm_small()
-    format_instructions = output_parser.get_format_instructions()
+    # Pass combined summary to final llm
+    output_parser_with_retry = OutputFixingParser.from_llm(
+        parser=output_parser,
+        llm=llm,
+    )
+    format_instructions = output_parser_with_retry.get_format_instructions()
     prediction_prompt = ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate(
@@ -202,12 +207,10 @@ def _build_reviewer_chain(
             ),
         ]
     )
-
-    # Pass combined summary to final llm
     reviewer_chain = LLMChain(
         llm=llm,
         prompt=prediction_prompt,
-        output_parser=output_parser,
+        output_parser=output_parser_with_retry,
         output_key=output_key,
     )
     return reviewer_chain
