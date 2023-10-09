@@ -38,7 +38,9 @@ class MatchPrediction(BaseModel):
         description='The team who is predicted to win the match. Use "Draw" if a draw is predicted',
     )
     points_margin: int = Field(
-        ..., description="The predicted points difference for the winning team", ge=0
+        ...,
+        description="The predicted points difference for the winning team. CANNOT BE NULL OR ZERO",
+        ge=1,
     )
 
 
