@@ -71,9 +71,9 @@ def load_fixtures_df() -> pd.DataFrame:
 
 def filter_df(tdf: pd.DataFrame) -> pd.DataFrame:
     return tdf[
-        # Ignore knockout
-        (tdf["pool"] != "KNOCKOUT")
-        &
+        # # Ignore knockout
+        # (tdf["pool"] != "KNOCKOUT")
+        # &
         # Ignore prior matches
         (tdf["date"].dt.date >= st.session_state["min_date"])
     ]
@@ -182,7 +182,7 @@ if (
                 status.write("Pulling from the sources... (Scrape)")
                 docs = asyncio.run(
                     gubru.get_docs_from_search_results(
-                        search_results=search_results, first_chunk_only=True
+                        search_results=search_results, first_chunk_only=False
                     )
                 )
                 status.write("Extraction process... (summarise)")

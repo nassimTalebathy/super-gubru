@@ -39,10 +39,10 @@ raw,dow,date,home,away,venue,pool
 "Sat 30 Sept Argentina v Chile (2pm, Stade de la Beaujoire, Nantes)",Sat,2023-09-30,Argentina,Chile,"Stade de la Beaujoire, Nantes",D
 "Sat 7 Oct England v Samoa (4.45pm, Stade Pierre Mauroy, Lille)",Sat,2023-10-07,England,Samoa,"Stade Pierre Mauroy, Lille",D
 "Sun 8 Oct Japan v Argentina (noon, Stade de la Beaujoire, Nantes)",Sun,2023-10-08,Japan,Argentina,"Stade de la Beaujoire, Nantes",D
-"Sat 14 Oct Winner Pool C v Runner-up Pool D (4pm, Stade Vélodrome,",Sat,2023-10-14,Winner Pool C,Runner-up Pool D,"Stade Vélodrome,",KNOCKOUT
-"Sat 14 Oct Winner Pool B v Runner-up Pool A (8pm, Stade de France, Paris)",Sat,2023-10-14,Winner Pool B,Runner-up Pool A,"Stade de France, Paris",KNOCKOUT
-"Sun 15 Oct Winner Pool D v Runner-up Pool C (4pm, Stade Vélodrome,",Sun,2023-10-15,Winner Pool D,Runner-up Pool C,"Stade Vélodrome,",KNOCKOUT
-"Sun 15 Oct Winner Pool A v Runner-up Pool B (8pm, Stade de France, Paris)",Sun,2023-10-15,Winner Pool A,Runner-up Pool B,"Stade de France, Paris",KNOCKOUT
+"Sat 14 Oct Wales v Argentina (4pm, Stade Vélodrome,",Sat,2023-10-14,Wales,Argentina,"Stade Vélodrome,",KNOCKOUT
+"Sat 14 Oct Ireland v New Zealand (8pm, Stade de France, Paris)",Sat,2023-10-14,Ireland,New Zealand,"Stade de France, Paris",KNOCKOUT
+"Sun 15 Oct England v Fiji (4pm, Stade Vélodrome,",Sun,2023-10-15,England,Fiji,"Stade Vélodrome,",KNOCKOUT
+"Sun 15 Oct France v South Africa (8pm, Stade de France, Paris)",Sun,2023-10-15,France,South Africa,"Stade de France, Paris",KNOCKOUT
 "Fri 20 Oct Winner Quarter-final 1 v Winner Quarter-final 2 (8pm, Stade de",Fri,2023-10-20,Winner Quarter-final 1,Winner Quarter-final 2,Stade de,KNOCKOUT
 "Sat 21 Oct Winner Quarter-final 3 v Winner Quarter-final 4 (8pm, Stade de",Sat,2023-10-21,Winner Quarter-final 3,Winner Quarter-final 4,Stade de,KNOCKOUT
 "Fri 27 Oct Third-place Play-off (8pm, Stade de France, Paris)",Fri,2023-10-27,Loser Semi-final 1,Loser Semi-final 2,"Stade de France, Paris",KNOCKOUT

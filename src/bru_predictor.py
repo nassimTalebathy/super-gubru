@@ -104,7 +104,7 @@ def _build_map_reduce_chain(
     if llm is None:
         llm = get_llm()
     if llm_summariser is None:
-        llm_summariser = get_llm_small()
+        llm_summariser = get_llm()
     # Chain that is mapped over each document (small LLM used)
     summarise_prompt = ChatPromptTemplate.from_messages(
         [
@@ -228,8 +228,8 @@ class BaseGuBru(BaseModel):
     text_splitter: TextSplitter = Field(
         default_factory=lambda **kw: TokenTextSplitter(
             model_name=GPT_MODEL_NAME,
-            chunk_size=3000,  # max number of tokens per chunk
-            chunk_overlap=300,
+            chunk_size=8000,  # max number of tokens per chunk
+            chunk_overlap=400,
         )
     )
     html2text: Html2TextTransformer = Html2TextTransformer()
