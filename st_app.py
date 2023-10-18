@@ -31,7 +31,6 @@ if "auth_validated" not in st.session_state:
 
 
 #### Data ####
-@st.cache_data
 def load_fixtures_df() -> pd.DataFrame:
     print(f"Loading fixures from {st.session_state['min_date']} onwards...")
     df = pd.read_csv("rugby_world_cup_2023_fixtures.csv", parse_dates=["date"])
