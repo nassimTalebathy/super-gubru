@@ -45,5 +45,5 @@ raw,dow,date,home,away,venue,pool
 "Sun 15 Oct France v South Africa (8pm, Stade de France, Paris)",Sun,2023-10-15,France,South Africa,"Stade de France, Paris",KNOCKOUT
 "Fri 20 Oct Argentina v New Zealand (8pm, Stade de",Fri,2023-10-20,Argentina,New Zealand,Stade de,KNOCKOUT
 "Sat 21 Oct England v South Africa (8pm, Stade de",Sat,2023-10-21,England,South Africa,Stade de,KNOCKOUT
-"Fri 27 Oct Third-place Play-off (8pm, Stade de France, Paris)",Fri,2023-10-27,Loser Semi-final 1,Loser Semi-final 2,"Stade de France, Paris",KNOCKOUT
-"Sat 28 Oct World Cup Final (8pm, Stade de France, Paris)",Sat,2023-10-28,Winner Semi-final 1,Winner Semi-final 2,"Stade de France, Paris",KNOCKOUT
+"Fri 27 Oct Third-place Play-off (8pm, Stade de France, Paris)",Fri,2023-10-27,Argentina,England,"Stade de France, Paris",KNOCKOUT
+"Sat 28 Oct World Cup Final (8pm, Stade de France, Paris)",Sat,2023-10-28,New Zealand,South Africa,"Stade de France, Paris",KNOCKOUT
